@@ -9,6 +9,8 @@ const Input = () => {
     const [showEmojis, setShowEmojis] = useState(false)
     const filePickerRef = useRef(null)
 
+    const theme = window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"
+
     const addImageToPost = () => {}
 
     const addEmoji = (e) => {
@@ -58,7 +60,7 @@ const Input = () => {
                             <Picker
                                 onSelect={addEmoji}
                                 style={{ position: 'absolute', marginTop: '465px', marginLeft: -40, maxWidth: '320px', borderRadius: '20px' }}
-                                theme="dark"
+                                theme={theme}
                             />
                         )}
                     </div>
