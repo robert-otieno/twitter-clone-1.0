@@ -1,9 +1,13 @@
-import { XIcon } from "@heroicons/react/outline"
-import { useState } from "react"
+import { CalendarIcon, ChartBarIcon, EmojiHappyIcon, PhotographIcon, XIcon } from "@heroicons/react/outline"
+import { useRef, useState } from "react"
 
 const Input = () => {
     const [input, setInput] = useState("")
     const [selectedFile, setSelectedFile] = useState(null)
+    const [showEmojis, setShowEmojis] = useState(false)
+    const filePickerRef = useRef(null)
+
+    const addImageToPost = () => {}
 
     return (
         <div className={`border-b border-gray-300 dark:border-gray-700 p-3 flex space-x-3 overflow-y-scroll`}>
@@ -20,6 +24,24 @@ const Input = () => {
                             <img src={selectedFile} alt="" className="rounded-2xl max-h-80 object-contain"/>
                         </div>
                     )}
+                </div>
+                <div className="flex items-center justify-between pt-2 5">
+                    <div className="flex items-center">
+                        <div className="icon" onClick={() => filePickerRef.current.click()}>
+                            <PhotographIcon className="h-[22px] text-[#1d9bf0]"/>
+                            <input type="file" hidden onChange={addImageToPost} ref={filePickerRef} />
+                        </div>
+                        <div className="icon rotate-90">
+                            <ChartBarIcon className="h-[22px] text-[#1d9bf0]"/>
+                        </div>
+                        <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
+                            <EmojiHappyIcon className="h-[22px] text-[#1d9bf0]"/>
+                        </div>
+                        <div className="icon">
+                            <CalendarIcon className="h-[22px] text-[#1d9bf0]"/>
+                        </div>
+                        {/* {showEmojis && ()} */}
+                    </div>
                 </div>
             </div>
         </div>
